@@ -1,0 +1,39 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+
+# Visual Studio / Rider / VSCode / IDE files
+.vs/
+.vscode/
+.idea/
+
+# Unity cache / local config
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Unity collab / plastic
+.plastic/
+.collab/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Others
+*.log
+*.tmp
+
+# If you have large binary assets you don't want in Git, track with LFS instead
+# See README in repo for Git LFS usage
