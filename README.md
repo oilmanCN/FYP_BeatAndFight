@@ -4,7 +4,11 @@
 
 Beat! & Fight! explores a gameplay question: **what happens when moving and attacking in a fighting game become actions earned through rhythm input?** Players read horizontal notes, choose when to advance or retreat, and compete on timing accuracy to deal damage, build energy, and push their opponent toward the arena edge.
 
-Developed as a two-person Final Year Project (FYP) in Unity and C#, with Koreographer supporting the music-event workflow. Both developers contributed across the rhythm and combat systems; the repository maintainer focused more on the rhythm-game side.
+Developed as a Final Year Project (FYP) in Unity and C#, with Koreographer supporting the music-event workflow.
+
+![Windows demo: mirrored attack and movement lanes beneath the fighting arena](docs/images/demo-match.png)
+
+*Actual Windows demo capture: blue and red attack notes distinguish the two players, orange notes provide movement opportunities, and both sides travel toward the central judgment targets.*
 
 [中文介绍](#中文介绍) · [Play the demo](#play-the-demo) · [Controls](#controls) · [Implementation and source guide](#implementation-and-source-guide)
 
@@ -67,7 +71,16 @@ A match can end through:
 - **Ring-out:** force the opponent beyond the arena boundary.
 - **Time-out:** compare remaining HP when the round timer expires; equal HP produces a draw.
 
-The project also includes a song-selection flow with four song entries and a random-selection option, a training room, a six-page tutorial, and settings for volume, brightness, resolution, and a timing-offset value.
+The source contains four song entries and a random-selection option, a training room, a six-page tutorial, and settings for volume, brightness, resolution, and a timing-offset value.
+
+### In the playable demo
+
+- **Random-match entry:** the visible **Random surprise!** button starts a match on a floating arena, with a **Ready? FIGHT!** opening and a round countdown.
+- **Combat HUD:** both players have visible HP and energy bars. An **Out of Punch Range!** message makes the spacing requirement explicit.
+- **Training room:** a separate grid-backed arena presents the same mirrored note layout with an infinity symbol in place of the round countdown.
+- **In-game tutorial:** the Esc menu opens illustrated pages explaining the HUD, note types, movement, attacks, and skill bindings, and offers a route back to the main menu.
+
+These interface and presentation features were observed in the bundled Windows build. The detailed damage, timing-window, and skill rules elsewhere in this README are documented from source; the demo session did not validate every combat outcome.
 
 ## Play the demo
 
@@ -180,13 +193,13 @@ This is a learning and gameplay-exploration prototype. The current implementatio
 - Unify timing windows, sample-rate handling, and timing-offset initialization.
 - Improve pause/restart behavior and test overlapping skill effects and repeated scene transitions.
 
-The feature descriptions and numerical examples above are based on the checked-in scripts and scene settings. They are not performance benchmarks or a claim that every runtime path has been tested.
+Numerical examples are based on the checked-in scripts and scene settings. The demo observations are identified separately; they are not performance benchmarks or a claim that every runtime path has been tested.
 
 ## 中文介绍
 
 **Beat! & Fight! 是一个将横向音游与本地双人格斗结合的毕业设计原型：节奏决定行动时机，距离与判定结果决定交锋收益。**
 
-项目的横向音符设计受到《Muse Dash》《太鼓达人》启发，格斗思路参考《拳皇》《街霸》，尝试把前进、后退、攻击、能量管理与技能使用放进同一套节奏对抗规则中。项目由两名开发者合作完成，双方均参与音游与格斗部分，仓库维护者更侧重音游系统。
+项目的横向音符设计受到《Muse Dash》《太鼓达人》启发，格斗思路参考《拳皇》《街霸》，尝试把前进、后退、攻击、能量管理与技能使用放进同一套节奏对抗规则中。
 
 ### 玩法亮点
 
@@ -194,7 +207,7 @@ The feature descriptions and numerical examples above are based on the checked-i
 - **判定驱动交锋：** 攻击并非命中音符就直接扣血，而是比较双方的 Perfect / Good / Miss，再结合攻击距离结算伤害、击退和能量。
 - **能量与技能：** 成功的近距离攻击判定积累能量，可用于干扰对方音符速度、恢复与短暂限制对方操作，或施加强力击退。
 - **多种胜利条件：** 除了耗尽生命值，还可以将对手推出场地；时间结束时则比较剩余生命值。
-- **完整体验入口：** 仓库提供 Windows Demo、选曲、训练场、教程和设置界面。
+- **可直接试玩：** Windows Demo 中可通过 Random surprise! 进入浮空场地对战，查看开场提示、倒计时、生命与能量条，以及超出攻击距离的提示；训练场和图文教程提供练习与入门入口。
 
 ### 技术实现
 
@@ -204,10 +217,23 @@ The feature descriptions and numerical examples above are based on the checked-i
 
 试玩时请完整下载并保留 `FYP_demo` 文件夹，运行 `Beat!&Fight!.exe`。1P 使用 **A / D 移动、V 攻击、Q / W / E 技能**；2P 使用 **← / → 移动、K 攻击、U / I / O 技能**。移动和普通攻击需要配合对应音符时机。
 
-## Credits and use
+## License, third-party assets, and credits
 
-This is a non-commercial student learning project. Koreographer and the original demo-code portions belong to **Sonic Bloom, LLC**; relevant copyright headers are retained in the source. Third-party music, models, animations, and other assets remain the property of their respective owners.
+This is a student project created for learning and non-commercial demonstration. Original project-owned code and documentation are released under the [MIT License](LICENSE). **Third-party code, music, models, animations, images, and other media are excluded from that license grant** and remain subject to their respective owners' terms. Existing third-party copyright notices must be preserved, including in adapted example scripts.
+
+| Resource | Attribution and license scope |
+| --- | --- |
+| Koreographer and its example-code foundation | **Sonic Bloom, LLC**. The bundled ReadMe identifies Koreographer 1.6.0 and refers to the Unity Asset Store terms. This project's MIT license does not relicense the plugin or its original example-code portions. |
+| Character models and animations | Includes files named `Miku.fbx`, `pilot_medium_bloodhound_LOD0.fbx`, and movement/boxing animation FBXs. Original creators, download sources, and redistribution permissions are not fully recorded in this repository; filenames are an inventory, not verified attribution. |
+| Music and sound effects | Includes recordings labelled Katyusha, Radetzky March, Red River Valley, みくみくにしてあげる, GUILE, and Whips and Chains, plus UI sounds. Rights in compositions and recordings are separate; inclusion does not grant permission to reuse either. |
+| Background art, textures, and other media | Includes third-party promotional imagery visible in the menus. Ownership remains with the respective creators and rights holders; source and permission records are incomplete. |
+
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the repository evidence and attribution gaps. Verify the relevant permissions before redistributing or reusing third-party material.
+
+The non-commercial statement describes the project's intended use; it does not add a non-commercial restriction to MIT or establish that third-party uses are authorized. No endorsement by the referenced games, artists, or publishers is implied.
 
 The design-reference games listed above are credited as inspiration. Inclusion in this repository does not imply authorship of third-party assets or permission to reuse them under a new license.
+
+本项目用于学习与非商业展示；原创代码和文档采用 MIT 许可，第三方插件、模型、动画、音乐及图像不包含在该授权范围内，仍遵循各自许可。非商业用途并不自动构成版权授权或“不侵权”保证。
 
 For attribution corrections or removal requests, please [open an issue](https://github.com/oilmanCN/FYP_BeatAndFight/issues).
